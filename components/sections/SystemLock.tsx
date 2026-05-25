@@ -63,15 +63,15 @@ export default function SystemLock() {
         trigger: section,
         pin: el,
         start: "top top",
-        end: "+=300%",
+        end: "+=400%",
         scrub: 0.5,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const progress = self.progress;
           let newState: SystemState;
-          if (progress < 0.33) {
+          if (progress < 0.25) {
             newState = "analysis";
-          } else if (progress < 0.66) {
+          } else if (progress < 0.50) {
             newState = "execution";
           } else {
             newState = "connect";
@@ -93,7 +93,7 @@ export default function SystemLock() {
     <section
       ref={sectionRef}
       className="relative w-full overflow-hidden"
-      style={{ height: "300vh" }}
+      style={{ height: "400vh" }}
     >
       <div
         ref={pinRef}
