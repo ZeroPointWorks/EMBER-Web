@@ -8,11 +8,11 @@ export default function TerminalLaunch() {
 
   return (
     <section className="relative w-full border-b border-[rgba(255,255,255,0.08)]">
-      <div className="mx-auto grid min-h-screen max-w-[1440px] grid-cols-1 lg:grid-cols-12">
+      <div className="mx-auto grid min-h-screen max-w-[1440px] grid-cols-1 lg:grid-cols-12 lg:gap-12">
         <div className="absolute left-1/2 top-0 hidden h-full w-px bg-[rgba(255,255,255,0.08)] lg:block" />
 
         {/* Left — Instructions / info */}
-        <div className="relative flex flex-col justify-center px-6 py-16 lg:col-span-5 lg:px-12">
+        <div className="relative flex flex-col justify-center px-6 py-16 lg:col-span-5 lg:px-16">
           <div className="absolute right-0 top-0 hidden h-full w-px bg-[rgba(255,255,255,0.08)] lg:block" />
 
           <div className="mb-4 flex items-center gap-3">
@@ -30,7 +30,7 @@ export default function TerminalLaunch() {
             PROTOCOL
           </h2>
 
-          <p className="font-mono text-sm leading-relaxed text-white/40 max-w-sm mb-8">
+          <p className="font-mono text-sm leading-relaxed text-white/40 max-w-sm mb-12">
             No premine. No ICO. No dev tax. Fair distribution through direct
             contribution. The anti-farm reward curve is active from block one.
           </p>
@@ -53,10 +53,10 @@ export default function TerminalLaunch() {
         </div>
 
         {/* Right — Terminal form */}
-        <div className="relative flex flex-col justify-center px-6 py-16 lg:col-span-7 lg:px-16">
-          <div className="w-full max-w-lg border border-[rgba(255,255,255,0.1)] p-8 lg:p-12">
+        <div className="relative flex flex-col justify-center px-6 py-16 lg:col-span-7 lg:px-20">
+          <div className="w-full max-w-xl border border-[rgba(255,255,255,0.1)] p-8 lg:p-14">
             {/* Terminal header */}
-            <div className="mb-8 flex items-center gap-3 border-b border-[rgba(255,255,255,0.08)] pb-4">
+            <div className="mb-10 flex items-center gap-3 border-b border-[rgba(255,255,255,0.08)] pb-5">
               <div className="flex gap-1.5">
                 <span className="inline-block h-2 w-2 rounded-full bg-crimson" />
                 <span className="inline-block h-2 w-2 rounded-full bg-white/20" />
@@ -68,8 +68,8 @@ export default function TerminalLaunch() {
             </div>
 
             {/* Amount field */}
-            <div className="mb-6">
-              <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.15em] text-white/30">
+            <div className="mb-8">
+              <label className="mb-3 block font-mono text-[10px] uppercase tracking-[0.15em] text-white/30">
                 Contribution Amount (XMR)
               </label>
               <div className="relative">
@@ -87,8 +87,8 @@ export default function TerminalLaunch() {
             </div>
 
             {/* Wallet field */}
-            <div className="mb-8">
-              <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.15em] text-white/30">
+            <div className="mb-10">
+              <label className="mb-3 block font-mono text-[10px] uppercase tracking-[0.15em] text-white/30">
                 Wallet Address
               </label>
               <div className="relative">
@@ -106,7 +106,7 @@ export default function TerminalLaunch() {
             </div>
 
             {/* Simulated cursor blink */}
-            <div className="mb-8 flex items-center gap-2 font-mono text-[11px] text-white/20">
+            <div className="mb-10 flex items-center gap-2 font-mono text-[11px] text-white/20">
               <span className="inline-block h-4 w-[2px] bg-toxic animate-pulse" />
               AWAITING INPUT — ENTER AMOUNT & ADDRESS
             </div>
@@ -114,14 +114,14 @@ export default function TerminalLaunch() {
             {/* Main CTA */}
             <button
               type="button"
-              className="group relative w-full border border-white/15 bg-transparent px-8 py-5 font-display text-lg font-bold uppercase tracking-[0.1em] text-white transition-all hover:bg-white hover:text-black active:translate-y-[2px]"
+              className="group relative w-full border border-white/15 bg-transparent px-8 py-6 font-display text-lg font-bold uppercase tracking-[0.1em] text-white transition-all hover:bg-white hover:text-black active:translate-y-[2px]"
             >
               <span className="relative z-10 transition-colors group-hover:text-black">
                 Execute Contribution
               </span>
             </button>
 
-            <p className="mt-4 font-mono text-[10px] leading-relaxed text-white/15 text-center">
+            <p className="mt-6 font-mono text-[10px] leading-relaxed text-white/15 text-center">
               By contributing you agree to the anti-farm consensus protocol.
               <br />
               No premine. No ICO. No dev tax.
