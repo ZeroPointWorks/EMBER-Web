@@ -62,10 +62,12 @@ export default function SystemLock() {
       ScrollTrigger.create({
         trigger: section,
         pin: el,
+        pinSpacing: true,
         start: "top top",
         end: "+=400%",
         scrub: 0.5,
         invalidateOnRefresh: true,
+        fastScrollEnd: true,
         onUpdate: (self) => {
           const progress = self.progress;
           let newState: SystemState;
@@ -97,7 +99,8 @@ export default function SystemLock() {
     >
       <div
         ref={pinRef}
-        className="sticky top-0 left-0 flex h-screen w-full items-center border-b border-[rgba(255,255,255,0.08)]"
+        className="flex h-screen w-full items-center"
+        style={{ zIndex: 0 }}
       >
         <div className="mx-auto grid h-full w-full max-w-[1440px] grid-cols-1 lg:grid-cols-12">
           {/* Vertical dividers */}
