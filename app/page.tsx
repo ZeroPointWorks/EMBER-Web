@@ -1,7 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import Manifesto from "@/components/sections/Manifesto";
 import Dashboard from "@/components/sections/Dashboard";
-import TerminalLaunch from "@/components/sections/TerminalLaunch";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
       <Hero />
       <Manifesto />
       <Dashboard />
-      <TerminalLaunch />
       <Footer />
     </main>
   );
