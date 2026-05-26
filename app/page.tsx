@@ -1,15 +1,17 @@
-import BootSequence from "@/components/sections/BootSequence";
-import ManifestoGlitch from "@/components/sections/ManifestoGlitch";
-import CorruptDashboard from "@/components/sections/CorruptDashboard";
-import BrokenTerminal from "@/components/sections/BrokenTerminal";
+import Hero from "@/components/sections/Hero";
+import Manifesto from "@/components/sections/Manifesto";
+import Dashboard from "@/components/sections/Dashboard";
+import TerminalLaunch from "@/components/sections/TerminalLaunch";
+import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <main className="crt screen-shake">
-      <BootSequence />
-      <ManifestoGlitch />
-      <CorruptDashboard />
-      <BrokenTerminal />
+    <main>
+      <Hero />
+      <Manifesto />
+      <Dashboard />
+      <TerminalLaunch />
+      <Footer />
     </main>
   );
 }
