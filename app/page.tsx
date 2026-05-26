@@ -1,15 +1,15 @@
-import Hero from "@/components/sections/Hero";
-import KineticReveal from "@/components/sections/KineticReveal";
-import SystemLock from "@/components/sections/SystemLock";
-import TerminalLaunch from "@/components/sections/TerminalLaunch";
+import BootSequence from "@/components/sections/BootSequence";
+import ManifestoGlitch from "@/components/sections/ManifestoGlitch";
+import CorruptDashboard from "@/components/sections/CorruptDashboard";
+import BrokenTerminal from "@/components/sections/BrokenTerminal";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <KineticReveal />
-      <SystemLock />
-      <TerminalLaunch />
+    <main className="crt screen-shake">
+      <BootSequence />
+      <ManifestoGlitch />
+      <CorruptDashboard />
+      <BrokenTerminal />
     </main>
   );
 }

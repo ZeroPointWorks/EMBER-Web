@@ -4,8 +4,6 @@
   --color-toxic: #00FF66;
   --color-crimson: #FF3333;
   --color-void: #080808;
-  --color-pure-black: #000000;
-  --color-border: rgba(255,255,255,0.08);
   --font-display: "Syne", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
@@ -14,38 +12,141 @@ html, body {
   background: #000000;
   color: #ffffff;
   overflow-x: hidden;
-  font-feature-settings: "ss01" on, "ss02" on;
   font-family: "JetBrains Mono", monospace;
 }
 
-body::before {
+* { border-radius: 0px !important; }
+
+::selection { background: #00FF66; color: #000000; }
+
+/* Scan lines overlay */
+body::after {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 9999;
   pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background: repeating-linear-gradient(0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,255,102,0.015) 2px,
+    rgba(0,255,102,0.015) 4px);
 }
 
-* {
-  border-radius: 0px !important;
-  border-color: rgba(255,255,255,0.08);
+/* CRT vignette */
+.crt::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
 }
 
-::selection {
-  background: #00FF66;
-  color: #000000;
+/* Glitch animations */
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  10% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 2px); }
+  20% { clip-path: inset(50% 0 30% 0); transform: translate(3px, -1px); }
+  30% { clip-path: inset(10% 0 70% 0); transform: translate(-2px); }
+  40% { clip-path: inset(40% 0 40% 0); transform: translate(2px, 1px); }
+  50% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, -2px); }
+}
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  15% { clip-path: inset(30% 0 50% 0); transform: translate(2px, -3px); }
+  25% { clip-path: inset(60% 0 20% 0); transform: translate(-4px, 1px); }
+  35% { clip-path: inset(15% 0 65% 0); transform: translate(3px); }
+  45% { clip-path: inset(45% 0 35% 0); transform: translate(-2px, 2px); }
+  55% { clip-path: inset(75% 0 5% 0); transform: translate(1px, -1px); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  8% { opacity: 0.7; }
+  10% { opacity: 1; }
+  45% { opacity: 0.9; }
+  47% { opacity: 0.2; }
+  49% { opacity: 0.8; }
+  50% { opacity: 1; }
+  92% { opacity: 1; }
+  94% { opacity: 0.3; }
+  96% { opacity: 0.9; }
+}
+@keyframes text-flicker {
+  0%, 100% { opacity: 1; }
+  97% { opacity: 0; }
+  98% { opacity: 0.3; }
+  99% { opacity: 1; }
+}
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0); }
+  5% { transform: translate(-2px, 1px); }
+  10% { transform: translate(2px, -1px); }
+  15% { transform: translate(-1px, 2px); }
+  20% { transform: translate(0); }
+}
+@keyframes scan-line {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+@keyframes pulse-crimson {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes data-corrupt {
+  0%, 100% { opacity: 1; }
+  30% { opacity: 0; }
+  31% { opacity: 1; }
+  60% { opacity: 0.7; }
+  61% { opacity: 1; }
+  85% { opacity: 0; }
+  86% { opacity: 0.5; }
+  87% { opacity: 1; }
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(3px) translateY(-2px); }
+  50% { transform: translateX(-2px) translateY(3px); }
+  75% { transform: translateX(4px) translateY(-1px); }
 }
 
-::-webkit-scrollbar {
-  width: 4px;
+.glitch-text {
+  position: relative;
+  animation: flicker 4s infinite;
 }
-::-webkit-scrollbar-track {
-  background: #000000;
+.glitch-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  color: #00FF66;
+  animation: glitch-1 3s infinite;
+  opacity: 0.4;
+  pointer-events: none;
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.15);
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  color: #FF3333;
+  animation: glitch-2 2.5s infinite;
+  opacity: 0.4;
+  pointer-events: none;
 }
+
+.screen-shake {
+  animation: screen-shake 8s infinite;
+}
+
+.corrupt {
+  animation: data-corrupt 6s infinite;
+}
+
+.drift {
+  animation: drift 7s infinite;
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(0,255,102,0.3); }
